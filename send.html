@@ -73,19 +73,17 @@
                    .replace(/#.*$/, '')
                    .split('&');
 
-    for(var i=0, l=query.length; i<l; i++) {
-       var aux = decodeURIComponent(query[i]).split('=');
-       get[aux[0]] = aux[1];
-    }
-	}
-	//get the 'index' query parameter
-	alert(get['pk']);
-			/*var EncryptionResult = cryptico.encrypt(document.getElementById("passwordtoencrypt").value, document.getElementById("publickeytoencrypt").value);
+					for(var i=0, l=query.length; i<l; i++) {
+						var aux = decodeURIComponent(query[i]).split('=');
+						get[aux[0]] = aux[1];
+					}
+			}
+			//get the 'index' query parameter
+			var pk = get['pk']+"=";
+			var EncryptionResult = cryptico.encrypt(document.getElementById("passwordToEncrypt").value, pk);
 			
-			document.getElementById("encryptedpassword").value = EncryptionResult.cipher;
-			
-			//demo
-			document.getElementById("passwordtodecrypt").value = EncryptionResult.cipher;*/
+			//document.getElementById("encryptedpassword").value = EncryptionResult.cipher;
+			alert(EncryptionResult.cipher);
 		};
 </script>
 </body>

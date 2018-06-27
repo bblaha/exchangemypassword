@@ -1,5 +1,6 @@
 ﻿<?php
 require_once "db_functions.php";
+echo "start";
 if($_GET["pk"]!=""){
     getFromDB($_GET["pk"]);
 }

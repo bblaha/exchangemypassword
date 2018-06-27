@@ -79,7 +79,7 @@
 					}
 			}
 			//get the 'index' query parameter
-			var pk = get['pk']+"=";
+			var pk = decodeURIComponent(get['pk']);
 			var EncryptionResult = cryptico.encrypt(document.getElementById("passwordToEncrypt").value, pk);
 			
 			//document.getElementById("encryptedpassword").value = EncryptionResult.cipher;

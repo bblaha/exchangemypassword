@@ -67,7 +67,7 @@
 			var RSAkey = cryptico.generateRSAKey(document.getElementById("privatephrase").value, 1024);
 			var PublicKeyString = cryptico.publicKeyString(RSAkey);
 
-			document.getElementById("publickeylink").innerHTML = '<a href="https://expw.cored.co/send.html?pk='+PublicKeyString+'">expw.cored.co/send.html?pk='+PublicKeyString+'</a>';
+			document.getElementById("publickeylink").innerHTML = '<a href="https://expw.cored.co/send.html?pk='+encodeURIComponent(PublicKeyString)+'">expw.cored.co/send.html?pk='+encodeURIComponent(PublicKeyString)+'</a>';
 			document.getElementById("publickeylink").style.display = "block";
 			document.getElementById("publickeylabel").style.display = "block";
 			

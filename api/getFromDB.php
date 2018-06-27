@@ -1,8 +1,7 @@
 ﻿<?php
 require_once "db_functions.php";
-echo "start";
 if($_GET["pk"]!=""){
-    getFromDB($_GET["pk"]);
+    getFromDB(mysql_escape_string($_GET["pk"]));
 }
 else{
         $arr = array('error' => 'No name given');
@@ -11,9 +10,11 @@ else{
 function getPoints($pk){
     
     $result = db_query("SELECT publickey, password FROM passwords WHERE publickey LIKE '".$pk."';");
-
+	
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
+		
+		echo "start";
     }
     
     echo $rows;

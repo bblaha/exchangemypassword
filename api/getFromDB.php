@@ -10,11 +10,10 @@ else{
 function getPoints($pk){
     
     $result = db_query("SELECT publickey, password FROM passwords WHERE publickey LIKE '".$pk."';");
-	
+	echo $result;
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
 		
-		echo "start";
     }
     
     echo $rows;

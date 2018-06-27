@@ -1,7 +1,7 @@
 ﻿<?php
 require_once "db_functions.php";
 if($_GET["pk"]!=""){
-    getFromDB(mysql_escape_string($_GET["pk"]));
+    getFromDB($_GET["pk"]);
 }
 else{
         $arr = array('error' => 'No name given');
@@ -13,7 +13,6 @@ function getFromDB($pk){
 
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
-		
     }
     
     echo $rows;

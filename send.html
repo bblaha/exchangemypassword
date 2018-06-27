@@ -31,13 +31,14 @@
 			<div class="pure-u-md-1-5"></div>
             <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
                 <div class="pure-form pure-form-stacked">
+					<p>Someone has sent you this link, because they want you to share a password with them without running the risk of somebody stealing it.</p>
                     <fieldset>
 
-                        <label for="privatephrase">Enter a word that only you know, like a password</label>
-                        <input id="privatephrase" type="text" placeholder="Private phrase">
+                        <label for="passwordToEncrypt">Just enter your password here and we will take care of everything else</label>
+                        <input id="passwordToEncrypt" type="text" placeholder="Your password">
 
 
-                        <button type="button" onclick="generateSharelink()" class="pure-button is-center">Generate link</button>
+                        <button type="button" onclick="encryptPw()" class="pure-button is-center">Send password securely</button>
                     </fieldset>
                 </div>
             </div>
@@ -61,16 +62,30 @@
 <script language="JavaScript" type="text/javascript" src="./js/aes.js"></script>
 <script language="JavaScript" type="text/javascript" src="./js/api.js"></script>
 <script>
-        function generateSharelink(){
-			
-			
-			var RSAkey = cryptico.generateRSAKey(document.getElementById("privatephrase").value, 1024);
-			var PublicKeyString = cryptico.publicKeyString(RSAkey);
+        function encryptPw() {
+			var get = {};
+			if(document.location.toString().indexOf('?') !== -1) {
+				var query = document.location
+                   .toString()
+                   // get the query string
+                   .replace(/^.*?\?/, '')
+                   // and remove any existing hash string (thanks, @vrijdenker)
+                   .replace(/#.*$/, '')
+                   .split('&');
 
-			document.getElementById("publickeylink").innerHTML = '<a href="https://expw.cored.co/send.html?pk='+PublicKeyString+'">expw.cored.co/send.html?pk='+PublicKeyString+'</a>';
-			document.getElementById("publickeylink").style.display = "block";
-			document.getElementById("publickeylabel").style.display = "block";
+    for(var i=0, l=query.length; i<l; i++) {
+       var aux = decodeURIComponent(query[i]).split('=');
+       get[aux[0]] = aux[1];
+    }
+	}
+	//get the 'index' query parameter
+	alert(get['pk']);
+			/*var EncryptionResult = cryptico.encrypt(document.getElementById("passwordtoencrypt").value, document.getElementById("publickeytoencrypt").value);
 			
+			document.getElementById("encryptedpassword").value = EncryptionResult.cipher;
+			
+			//demo
+			document.getElementById("passwordtodecrypt").value = EncryptionResult.cipher;*/
 		};
 </script>
 </body>

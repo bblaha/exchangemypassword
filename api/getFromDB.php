@@ -13,6 +13,7 @@ function getFromDB($pk){
 
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
+		echo $row;
     }
     
     echo $rows;

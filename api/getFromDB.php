@@ -7,10 +7,10 @@ else{
         $arr = array('error' => 'No name given');
         echo json_encode($arr);
 }
-function getPoints($pk){
+function getFromDB($pk){
     
     $result = db_query("SELECT publickey, password FROM passwords WHERE publickey LIKE '".$pk."';");
-	echo $result;
+
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
 		

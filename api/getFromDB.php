@@ -14,7 +14,7 @@ function getFromDB($pk){
 	$stmt->execute();
 
 	$result = $stmt->get_result();*/
-    $result = db_query("SELECT publickey, password FROM passwords WHERE publickey = '".$pk."';");
+    $result = db_query("SELECT publickey, password FROM passwords';");
 
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;

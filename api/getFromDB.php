@@ -8,8 +8,13 @@ else{
         echo json_encode($arr);
 }
 function getFromDB($pk){
-    
-    $result = db_query("SELECT publickey, password FROM passwords WHERE publickey LIKE '".$pk."';");
+    /*$stmt = $dbConnection->prepare('SELECT * FROM employees WHERE name = ?');
+	$stmt->bind_param('s', $name); // 's' specifies the variable type => 'string'
+
+	$stmt->execute();
+
+	$result = $stmt->get_result();*/
+    $result = db_query("SELECT publickey, password FROM passwords WHERE publickey = '".$pk."';");
 
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;

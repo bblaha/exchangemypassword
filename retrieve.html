@@ -68,7 +68,7 @@
 
 			
 			//get password from DB
-			saveToDB(pk, EncryptionResult.cipher, myFunction);
+			getFromDB(pk, retrieveReturnFunction);
 			
 			
 			var pw = db_query("SELECT password FROM passwords WHERE publickey = '"+pk+"';");
@@ -88,7 +88,7 @@
 			xhttp.open("GET", url, true);
 			xhttp.send();
 			};
-			function myFunction(xhttp) {
+			function retrieveReturnFunction(xhttp) {
 				alert(xhttp.responseText);
 			};
 		

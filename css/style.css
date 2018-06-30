@@ -125,11 +125,11 @@ a.pure-button-primary {
     line-height: 1em;
 }
 
-#publickeylabel, #retrievallabel{
+#publickeylabel, #retrievallabel, #retrievallabel{
 	display:none;
 }
 
-.splash-head-green, #retrievallink {
+.splash-head-green {
 	display:none;
     font-size: 8px;
     font-weight: bold;

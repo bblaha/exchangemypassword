@@ -81,7 +81,7 @@
 			var EncryptionResult = cryptico.encrypt(document.getElementById("passwordToEncrypt").value, pk);
 			
 			//document.getElementById("encryptedpassword").value = EncryptionResult.cipher;
-			saveToDB(pk, EncryptionResult.cipher);
+			saveToDB(pk, EncryptionResult.cipher, myFunction);
 			function saveToDB(pk, pw, cFunction) {
 			var xhttp;
 			var url = "./api/saveToDB.php?pk="+encodeURIComponent(pk)+"&pw="+encodeURIComponent(pw);

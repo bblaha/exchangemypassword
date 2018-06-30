@@ -73,7 +73,7 @@
 		};
 		function getFromDB(pk, rsa, cFunction) {
 			var xhttp;
-			var url = "./api/getFromDB.php?pk="+encodeURIComponent(pk);
+			var url = "./api/getFromDB.php?pk="+encodeURIComponent(pk.substr(0,pk.length-1);
 			xhttp=new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {

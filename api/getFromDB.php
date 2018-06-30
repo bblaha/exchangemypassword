@@ -14,11 +14,10 @@ function getFromDB($pk){
 	$stmt->execute();
 
 	$result = $stmt->get_result();*/
-    $result = db_query("SELECT publickey, password FROM passwords';");
+    $result = db_query("SELECT publickey, password FROM passwords WHERE publickey LIKE '".$pk."';");
 
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
-		echo 'Test'.$row;
     }
     
     echo $rows;

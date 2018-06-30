@@ -8,7 +8,8 @@ else{
         echo json_encode($arr);
 }
 function setPoints($pw, $pk){
-    $result = db_query("INSERT INTO passwords VALUES(password = '".$pw."', publickey='".$pk."');");
+	$connection = db_connect();
+    $result = db_query("INSERT INTO passwords VALUES(password = '".mysqli_real_escape_string($connection,$pw)."', publickey='".mysqli_real_escape_string($connection,$pk)."');");
     if($result){
 		echo $result;
         $arr = array('result' => 'password entered');

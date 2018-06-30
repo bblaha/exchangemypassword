@@ -8,14 +8,10 @@ else{
         echo json_encode($arr);
 }
 function getFromDB($pk){
-    /*$stmt = $dbConnection->prepare('SELECT * FROM employees WHERE name = ?');
-	$stmt->bind_param('s', $name); // 's' specifies the variable type => 'string'
-
-	$stmt->execute();
-
-	$result = $stmt->get_result();*/
-    $result = db_query("SELECT publickey, password FROM passwords WHERE publickey LIKE '".$pk."';");
-
+	$connection = db_connect();
+	$query = "SELECT publickey, password FROM passwords WHERE publickey = '".mysqli_real_escape_string($connection,$pk)."';";
+    $result = db_query($query);
+	
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
     }
@@ -31,7 +27,7 @@ function getFromDB($pk){
         echo json_encode($rows[0]);
     }
     elseif(count($rows)>1){
-		$result = db_query("DELETE FROM passwords WHERE publickey LIKE '".$pk."';");
+		$result = db_query("DELETE FROM passwords WHERE publickey LIKE '".mysqli_real_escape_string($connection,$pk)."';");
         $arr = array('error' => 'Multiple passwords found, previous passwords deleted');
         echo json_encode($arr);
     }elseif(count($rows<1)){

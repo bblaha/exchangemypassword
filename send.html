@@ -67,9 +67,7 @@
 			if(document.location.toString().indexOf('?') !== -1) {
 				var query = document.location
                    .toString()
-                   // get the query string
                    .replace(/^.*?\?/, '')
-                   // and remove any existing hash string (thanks, @vrijdenker)
                    .replace(/#.*$/, '')
                    .split('&');
 
@@ -84,7 +82,22 @@
 			
 			//document.getElementById("encryptedpassword").value = EncryptionResult.cipher;
 			alert(EncryptionResult.cipher);
-		};
+			function saveToDB(pk, pw, cFunction) {
+			var xhttp;
+			var url = "./API/saveToDB.php?pk="+encodeURIComponent($pk)+"&pw="+encodeURIComponent($pw);
+			xhttp=new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				cFunction(this);
+			}
+			};
+			xhttp.open("GET", url, true);
+			xhttp.send();
+			}
+			function myFunction(xhttp) {
+			alert("Saved password to db");
+			}
+			};
 </script>
 </body>
 </html>

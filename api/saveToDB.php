@@ -7,7 +7,7 @@ else{
         $arr = array('error' => 'Missing value for DB');
         echo json_encode($arr);
 }
-function setPoints($pw, $pk){
+function saveToDB($pw, $pk){
 	$connection = db_connect();
     $result = db_query("INSERT INTO passwords VALUES(password = '".mysqli_real_escape_string($connection,$pw)."', publickey='".mysqli_real_escape_string($connection,$pk)."');");
     if($result){

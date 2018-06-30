@@ -70,9 +70,6 @@
 			//get password from DB
 			getFromDB(pk, RSAkey, retrieveReturnFunction);
 			
-			
-			
-			//document.getElementById("encryptedpassword").value = EncryptionResult.cipher;
 		};
 		function getFromDB(pk, rsa, cFunction) {
 			var xhttp;
@@ -88,13 +85,13 @@
 			};
 			function retrieveReturnFunction(xhttp, decryptRSAkey) {
 				var response = xhttp.responseText;
-				alert(response);
-				var password = JSON.parse(response.substr(5,response.length-5))["password"];
-				
-				
-				var decryptionResult = cryptico.decrypt(password, decryptRSAkey);
-				
-				document.getElementById("publickeylink").innerHTML = decryptionResult.plaintext;
+				if(response.substr(0,5)=="Array"){
+					var password = JSON.parse(response.substr(5,response.length-5))["password"];
+					var decryptionResult = cryptico.decrypt(password, decryptRSAkey);
+					document.getElementById("publickeylink").innerHTML = decryptionResult.plaintext;
+				}else{
+					document.getElementById("publickeylink").innerHTML = "Nobody has entered a password for your request yet.";
+				}
 				document.getElementById("publickeylink").style.display = "block";
 				document.getElementById("publickeylabel").style.display = "block";
 			};

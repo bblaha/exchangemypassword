@@ -62,7 +62,7 @@
 <script language="JavaScript" type="text/javascript" src="./js/aes.js"></script>
 <script language="JavaScript" type="text/javascript" src="./js/api.js"></script>
 <script>
-        function decryptPw() {
+        function retrievePw() {
 			var RSAkey = cryptico.generateRSAKey(document.getElementById("privatephrase").value, 1024);
 			var pk = cryptico.publicKeyString(RSAkey);
 
@@ -78,7 +78,7 @@
 		};
 		function getFromDB(pk, cFunction) {
 			var xhttp;
-			var url = "./api/getFromDB.php?pk="+encodeURIComponent(pk);
+			var url = "http://expq.cored.co/api/getFromDB.php?pk="+encodeURIComponent(pk);
 			xhttp=new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {

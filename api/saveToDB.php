@@ -9,7 +9,7 @@ else{
 }
 function saveToDB($pw, $pk){
 	$connection = db_connect();
-	$query = "INSERT INTO passwords(password,publickey) VALUES(password = '".mysqli_real_escape_string($connection,$pw)."', publickey='".mysqli_real_escape_string($connection,$pk)."');";
+	$query = "INSERT INTO passwords(password,publickey) VALUES('".mysqli_real_escape_string($connection,$pw)."', '".mysqli_real_escape_string($connection,$pk)."');";
     $result = db_query($query);
     if($result){
 		echo $result;
